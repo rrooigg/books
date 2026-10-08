@@ -8,8 +8,11 @@ const AddBookForm = ({ addBook }) => {
   });
 
   const handleChange = (event) => {
-    const { name, value } = event.target;
+    // const name = event.target.name;
+    // const value = event.target.value;
+    const { name, value } = event.target; //destructuring
 
+    // currentBook means holds the current inputs i.e stores book name & author before filling the year
     setBook((currentBook) => ({
       ...currentBook, 
       [name]: value
@@ -17,10 +20,12 @@ const AddBookForm = ({ addBook }) => {
   }
 
   const handleSubmit = (event) => {
+    // prevents HTML to perform it's normal form-submission and allows React to do it
     event.preventDefault();
 
     if(book.name && book.author && book.year) {
-      addBook({...book});
+      // ...book -> creates copy of object
+      addBook({...book}); 
       setBook({
         name: "",
         author: "",
